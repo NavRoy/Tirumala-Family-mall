@@ -3,5 +3,5 @@
   "/women/page": "app/women/page.js",
   "/sarees/page": "app/sarees/page.js",
   "/kurtis/page": "app/kurtis/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/product/[slug]/page": "app/product/[slug]/page.js"
 }
