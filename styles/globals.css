@@ -1,0 +1,162 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══ TIRUMALA FAMILY MALL DESIGN SYSTEM ═══════════════
+   Red:    #CC0000   Gold:  #C98C00
+   Cream:  #FAF6F0   Ink:   #1A0A08
+═════════════════════════════════════════════════════════ */
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --red:      #CC0000; --red-d:  #990000; --red-l:  #FF3333;
+  --gold:     #C98C00; --gold-l: #F5C040; --gold-p: #FEF3C7;
+  --cream:    #FAF6F0; --cream-d:#F0E8DC; --cream-dp:#E8D8C4;
+  --ink:      #1A0A08; --ink-m:  #5C2E24; --ink-mu: #8B5A52;
+  --rust:     #8B3A2A;
+  --sh-xs:    0 1px 8px rgba(26,10,8,0.06);
+  --sh-sm:    0 2px 16px rgba(26,10,8,0.08);
+  --sh-md:    0 6px 32px rgba(26,10,8,0.12);
+  --sh-lg:    0 12px 48px rgba(26,10,8,0.18);
+  --sh-red:   0 4px 20px rgba(204,0,0,0.22);
+  --ease:     cubic-bezier(.25,.46,.45,.94);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font-body);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:var(--font-display);line-height:1.08}
+::selection{background:rgba(204,0,0,0.13);color:var(--red-d)}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:4px}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--cream-d)}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+.no-scroll{scrollbar-width:none;-ms-overflow-style:none}
+.no-scroll::-webkit-scrollbar{display:none}
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes marqueeL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqueeR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes videoScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ── Utility layers ─────────────────────────────────── */
+@layer utilities {
+  /* Marquee tracks */
+  .marquee-fwd{animation:marqueeL 36s linear infinite;will-change:transform;display:flex;flex-shrink:0}
+  .marquee-rev{animation:marqueeR 36s linear infinite;will-change:transform;display:flex;flex-shrink:0}
+
+  /* Image zoom on hover */
+  .img-zoom{overflow:hidden}
+  .img-zoom img,.img-zoom .zoom-inner{transition:transform .6s var(--ease)}
+  .img-zoom:hover img,.img-zoom:hover .zoom-inner{transform:scale(1.07)}
+
+  /* Skeleton loader */
+  .skeleton{background:linear-gradient(90deg,#ede0cc 25%,#e2d5be 50%,#ede0cc 75%);background-size:200% 100%;animation:shimmer 1.5s ease infinite}
+
+  /* Section eyebrow */
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--red)}
+  .eyebrow::before,.eyebrow::after{content:'';display:block;width:26px;height:1px;background:var(--red);opacity:.4}
+
+  /* Dividers */
+  .div-gold{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .div-red{height:1.5px;background:linear-gradient(90deg,transparent,var(--red),transparent)}
+  .div-ornament{height:2px;background:linear-gradient(90deg,transparent 0%,#C98C00 15%,#CC0000 50%,#C98C00 85%,transparent 100%)}
+
+  /* Glass morphism */
+  .glass{background:rgba(250,246,240,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  .glass-dark{background:rgba(26,10,8,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+
+  /* Cards */
+  .card{background:#fff;border-radius:1rem;border:1px solid rgba(201,140,0,.1);box-shadow:var(--sh-sm);transition:box-shadow .35s var(--ease),transform .35s var(--ease)}
+  .card:hover{box-shadow:var(--sh-red);transform:translateY(-4px)}
+
+  /* Lotus full-bleed border — CSS background repeat */
+  .lotus-top,.lotus-bottom{
+    display:block;width:100%;height:20px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='16'%3E%3Cellipse cx='11' cy='13' rx='6' ry='3.5' fill='%238B3A2A' opacity='.5'/%3E%3Cellipse cx='5' cy='9' rx='4' ry='2' fill='%238B3A2A' opacity='.38' transform='rotate(-28 5 9)'/%3E%3Cellipse cx='17' cy='9' rx='4' ry='2' fill='%238B3A2A' opacity='.38' transform='rotate(28 17 9)'/%3E%3Cellipse cx='11' cy='5' rx='3' ry='4.5' fill='%238B3A2A' opacity='.45'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='4' cy='4' r='3' fill='%23C98C00' opacity='.55'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='4' cy='4' r='3' fill='%23C98C00' opacity='.55'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='4' cy='4' r='3' fill='%23C98C00' opacity='.55'/%3E%3C/svg%3E");
+    background-repeat:repeat-x;
+    background-position:0 center,24px center,34px center,44px center;
+    background-size:52px 14px,8px 8px,8px 8px,8px 8px;
+    flex-shrink:0;
+  }
+  .lotus-bottom{transform:scaleY(-1)}
+
+  /* Suta-style wavy card border */
+  .wavy-card{
+    border-radius:12px;
+    clip-path:polygon(
+      0% 3%,2% 0%,5% 2%,8% 0%,11% 2%,14% 0%,17% 2%,20% 0%,23% 2%,26% 0%,29% 2%,
+      32% 0%,35% 2%,38% 0%,41% 2%,44% 0%,47% 2%,50% 0%,53% 2%,56% 0%,59% 2%,
+      62% 0%,65% 2%,68% 0%,71% 2%,74% 0%,77% 2%,80% 0%,83% 2%,86% 0%,89% 2%,
+      92% 0%,95% 2%,98% 0%,100% 3%,
+      100% 97%,98% 100%,95% 98%,92% 100%,89% 98%,86% 100%,83% 98%,80% 100%,
+      77% 98%,74% 100%,71% 98%,68% 100%,65% 98%,62% 100%,59% 98%,56% 100%,
+      53% 98%,50% 100%,47% 98%,44% 100%,41% 98%,38% 100%,35% 98%,32% 100%,
+      29% 98%,26% 100%,23% 98%,20% 100%,17% 98%,14% 100%,11% 98%,8% 100%,
+      5% 98%,2% 100%,0% 97%
+    );
+    transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+  }
+  .wavy-card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(204,0,0,0.2)}
+
+  /* Animation utilities */
+  .anim-fade-up{animation:fadeUp .55s var(--ease) both}
+  .anim-fade-in{animation:fadeIn .45s var(--ease) both}
+  .anim-scale{animation:scaleIn .4s var(--ease) both}
+  .anim-slide-down{animation:slideDown .3s var(--ease) both}
+  .delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}
+  .delay-3{animation-delay:.3s}.delay-4{animation-delay:.4s}
+
+  /* Gradient backgrounds */
+  .bg-red-grad{background:linear-gradient(135deg,#660000,#990000,#CC0000)}
+  .bg-dark-grad{background:linear-gradient(135deg,#1A0A08,#3D1A14,#8B3A2A)}
+  .bg-cream-grad{background:linear-gradient(180deg,#FEFCF8,#FAF6F0)}
+
+  /* Product hover overlay — mypurvi style */
+  .product-overlay{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(to top,rgba(26,10,8,.88) 0%,rgba(26,10,8,.3) 60%,transparent 100%);
+    transform:translateY(100%);
+    transition:transform .38s var(--ease);
+  }
+  .group:hover .product-overlay,.group:focus-within .product-overlay{transform:translateY(0)}
+
+  /* Social Spotlight video track */
+  .video-track{display:flex;animation:videoScroll 20s linear infinite;will-change:transform}
+
+  /* ===== MARQUEE FIXED (NO HYDRATION) ===== */
+
+@keyframes mq {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes mqRev {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.marquee {
+  animation: mq 25s linear infinite;
+}
+
+.marquee-rev {
+  animation: mqRev 25s linear infinite;
+}
+
+.marquee-text {
+  animation: mq 40s linear infinite;
+}
+}
