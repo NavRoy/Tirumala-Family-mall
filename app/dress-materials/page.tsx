@@ -1,3 +1,5 @@
+'use client'
+
 import type { Metadata } from 'next'
 import { ProductCard } from '@/components/product/ProductCard'
 import { getProductsByCategory } from '@/lib/products'
