@@ -214,17 +214,17 @@ export function getProductsByGender(g: Product['gender']): Product[] {
   return PRODUCTS.filter((p) => p.gender === g)
 }
 export const CATEGORIES = [
-  'sarees',
-  'kurtis',
-  'frocks',
-  'leggings',
-  'nightwear',
-  'shirts',
-  't-shirts',
-  'jeans',
-  'blazers',
-  'kurta-sets',
-  'sherwani',
+  { id: 'sarees', name: 'Sarees', count: 12 },
+  { id: 'kurtis', name: 'Kurtis', count: 8 },
+  { id: 'frocks', name: 'Frocks', count: 6 },
+  { id: 'leggings', name: 'Leggings', count: 10 },
+  { id: 'nightwear', name: 'Night Wear', count: 5 },
+  { id: 'shirts', name: 'Shirts', count: 7 },
+  { id: 't-shirts', name: 'T-Shirts', count: 9 },
+  { id: 'jeans', name: 'Jeans', count: 11 },
+  { id: 'blazers', name: 'Blazers', count: 4 },
+  { id: 'kurta-sets', name: 'Kurta Sets', count: 6 },
+  { id: 'sherwani', name: 'Sherwani', count: 3 },
 ];
 
 
