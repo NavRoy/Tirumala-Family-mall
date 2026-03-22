@@ -11,13 +11,6 @@ const nextConfig = {
     optimizeCss: true,
   },
 
-  // ✅ ADD THESE BELOW
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-}
+
 
 module.exports = nextConfig

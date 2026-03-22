@@ -1,3 +1,5 @@
+'use client'
+
 export default function BlazersPage() {
   return (
     <div style={{ padding: '40px' }}>
