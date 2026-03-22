@@ -213,3 +213,18 @@ export function getProductsByCategory(cat: string): Product[] {
 export function getProductsByGender(g: Product['gender']): Product[] {
   return PRODUCTS.filter((p) => p.gender === g)
 }
+export const CATEGORIES = [
+  'sarees',
+  'kurtis',
+  'frocks',
+  'leggings',
+  'nightwear',
+  'shirts',
+  't-shirts',
+  'jeans',
+  'blazers',
+  'kurta-sets',
+  'sherwani',
+];
+
+
