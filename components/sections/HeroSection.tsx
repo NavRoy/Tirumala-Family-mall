@@ -3,20 +3,22 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 
 const SLIDES = [
-
   {
     id: 2,
     img: '/banners/wome-banner1.png',
+    mobileImg: '/banners/women-mobile.png',
     href: '/women',
     pos: 'center center'
   },
-    {
+  {
     id: 3,
     img: '/banners/kids-banner.png',
+    mobileImg: '/banners/kids-mobile.png',
     href: '/kids',
     pos: 'center center'
   },
 ]
+
 
 export function HeroSection() {
   const [cur, setCur]     = useState(0)
@@ -42,7 +44,7 @@ export function HeroSection() {
    <section
   className="
     relative overflow-hidden bg-[#1A0A08]
-    h-[42vh] sm:h-[60vh] md:h-[70vh] lg:h-[calc(100vh-140px)]
+    h-[65vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh]
     min-h-[260px]
   "
 
@@ -60,14 +62,18 @@ export function HeroSection() {
             className="absolute inset-0 transition-opacity duration-700"
             style={{ opacity: i === cur ? 1 : 0, zIndex: i === cur ? 1 : 0 }}
           >
-       <img
-  src={s.img}
-  alt=""
-  className="w-full h-full object-cover"
-  style={{
-    objectPosition: s.pos
-  }}
-/>
+<picture>
+  {/* Mobile image */}
+  <source media="(max-width: 768px)" srcSet={s.mobileImg} />
+
+  {/* Desktop image */}
+  <img
+    src={s.img}
+    alt=""
+    className="w-full h-full object-cover md:object-cover"
+    style={{ objectPosition: s.pos }}
+  />
+</picture>
           </div>
         </Link>
       ))}

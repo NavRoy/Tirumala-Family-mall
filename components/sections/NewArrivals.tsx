@@ -69,10 +69,54 @@ export function NewArrivals() {
     display: none !important;
   }
 }
+  
+.mobile-na-title {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-na-title {
+    display: block !important;
+  }
+
+  /* ❌ hide left desktop title */
+  .na-layout > div:first-child {
+    display: none !important;
+  }
+}
       `}</style>
+
+      
 
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 20px' }}>
 
+      <div className="mobile-na-title" style={{ display: 'none', marginBottom: 20 }}>
+  <div style={{
+    background: '#E8D8C3',
+    borderRadius: 14,
+    padding: '40px 20px'
+  }}>
+    <h2 style={{
+      fontFamily: 'Cormorant Garamond',
+      fontSize: '2rem',
+      color: '#1A0A08',
+      textAlign: 'center'
+    }}>
+      New <br />
+      <span style={{ color: '#C9A84C' }}>Arrivals</span>
+    </h2>
+
+    <p style={{
+      marginTop: 12,
+      fontSize: 10,
+      letterSpacing: '0.35em',
+      color: '#7A6A55',
+      textAlign: 'center'
+    }}>
+      SS’26 COLLECTION
+    </p>
+  </div>
+</div>
         <div className="na-layout" style={{ display: 'flex', gap: 20 }}>
 
           {/* LEFT CARD */}
